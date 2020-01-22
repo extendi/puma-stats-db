@@ -2,7 +2,7 @@ require 'puma/plugin'
 
 Puma::Plugin.create do
   def production?
-    ENV.fetch('RACK_ENV', 'development') == 'production' || ENV.fetch('RACK_ENV', 'development') == 'staging'
+    ENV.fetch('RAILS_ENV', 'development') == 'production' || ENV.fetch('RAILS_ENV', 'development') == 'staging'
   end
 
   def log(msg)
