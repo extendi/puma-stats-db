@@ -7,14 +7,14 @@ Puma::Plugin.create do
 
   def log(msg)
     if production?
-      Rails.logger.info msg
+      puts msg
     else
       puts msg
     end
   end
 
   def flush
-    Rails.logger.flush if production?
+    #Rails.logger.flush if production?
   end
 
   def start(launcher)
