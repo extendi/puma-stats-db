@@ -2,19 +2,19 @@ require 'puma/plugin'
 
 Puma::Plugin.create do
   def production?
-    ENV.fetch('RAILS_ENV', 'development') == 'production' || ENV.fetch('RAILS_ENV', 'development') == 'staging'
+    ENV.fetch('RACK_ENV', 'development') == 'production' || ENV.fetch('RACK_ENV', 'development') == 'staging'
   end
 
   def log(msg)
     if production?
-      puts msg
+      Rails.logger.info msg
     else
       puts msg
     end
   end
 
   def flush
-    #Rails.logger.flush if production?
+    Rails.logger.flush if production?
   end
 
   def start(launcher)
